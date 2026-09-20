@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment 
+
+metadata:
+  name: devops-site
+  namespace: devops-site
+    
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: devops-site
+
+  template:
+    metadata: 
+      labels:
+        app: devops-site
+    spec:
+      containers:
+        - name: devops-static-site
+          image: ghcr.io/rsidhu-dataeko/devops-static-site:v3
+          ports:
+            - containerPort: 80
+
+    
