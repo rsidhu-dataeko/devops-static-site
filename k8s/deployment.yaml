@@ -23,5 +23,3 @@ spec:
           image: ghcr.io/rsidhu-dataeko/devops-static-site:v3
           ports:
             - containerPort: 80
-
-    
