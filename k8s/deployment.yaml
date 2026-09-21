@@ -7,7 +7,7 @@ metadata:
     
 
 spec:
-  replicas: 3
+  replicas: 5
 
   selector:
     matchLabels:
@@ -19,7 +19,29 @@ spec:
         app: devops-site
     spec:
       containers:
+
         - name: devops-static-site
           image: ghcr.io/rsidhu-dataeko/devops-static-site:v3
+          
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+          
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80 
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits: 
+              cpu: "500m"
+              memory: "128Mi"
+              
           ports:
             - containerPort: 80
+
+      
