@@ -22,3 +22,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build Docker image
         run: docker build -t devops-static-site:test .
+      - name: Tag Docker image
+        run: docker tag devops-static-site:test ghcr.io/rsidhu-dataeko/devops-static-site:${{ github.sha }}
