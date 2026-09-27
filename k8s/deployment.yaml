@@ -18,8 +18,10 @@ spec:
       labels:
         app: devops-site
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+        
       containers:
-
         - name: devops-static-site
           image: ghcr.io/rsidhu-dataeko/devops-static-site:v3
           
