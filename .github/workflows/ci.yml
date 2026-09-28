@@ -14,10 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Test Kubernetes access
-        run:  |
-          kubectl config current-context
-          kubectl get nodes
       - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
