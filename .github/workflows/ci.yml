@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: [self-hosted, macos, arm64, devops-site]
+    runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
