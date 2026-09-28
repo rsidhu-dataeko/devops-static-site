@@ -30,3 +30,11 @@ jobs:
         run: docker tag devops-static-site:test ghcr.io/rsidhu-dataeko/devops-static-site:${{ github.sha }}
       - name: Push Docker image
         run: docker push ghcr.io/rsidhu-dataeko/devops-static-site:${{ github.sha }}
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/devops-site \
+            devops-static-site=ghcr.io/rsidhu-dataeko/devops-static-site:${{ github.sha }} \
+            -n devops-site
+      - name: Verify Kubernetes rollout
+        run: |
+          kubectl rollout status deployment/devops-site -n devops-site
