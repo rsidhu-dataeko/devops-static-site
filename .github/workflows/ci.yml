@@ -37,4 +37,4 @@ jobs:
             -n devops-site
       - name: Verify Kubernetes rollout
         run: |
-          kubectl rollout status deployment/devops-site -n devops-site
+          kubectl rollout status deployment/devops-site -n devops-site --timeout=5m
